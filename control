@@ -1,0 +1,9 @@
+Package: com.yourcompany.widgetcolor
+Name: WidgetColor
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Jake Kaslewicz
+Author: Jake Kaslewicz
+Section: Tweaks
