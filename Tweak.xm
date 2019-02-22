@@ -18,10 +18,12 @@
 - (void)setCompositingFilter:(NSString *)filter {
 }
 - (void)setContentsMultiplyColor:(CGColorRef)contentsMultiplyColor {
-    %orig([UIColor whiteColor].CGColor);
+    if(contentsMultiplyColor == [UIColor blackColor].CGColor) %orig([UIColor whiteColor].CGColor);
+    else %orig;
 }
 -(CGColor *)contentsMultiplyColor{
-    return [UIColor whiteColor].CGColor;
+    if(%orig == [UIColor blackColor].CGColor) return [UIColor whiteColor].CGColor;
+    else return %orig;
 }
 
 %end
