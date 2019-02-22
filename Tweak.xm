@@ -14,20 +14,16 @@
 }
 %end
 
-%hook SBUILegibilityLabel
-- (void)setTextColor:(UIColor *)textColor {
-    %orig([UIColor whiteColor]);
+%hook CALayer
+- (void)setCompositingFilter:(NSString *)filter {
 }
-- (UIColor *)textColor {
-    return [UIColor whiteColor]; //%orig;
-    
+- (void)setContentsMultiplyColor:(CGColorRef)contentsMultiplyColor {
+    %orig([UIColor whiteColor].CGColor);
 }
-- (void)setColor:(UIColor *)color {
-    %orig([UIColor whiteColor]);
+-(CGColor *)contentsMultiplyColor{
+    return [UIColor whiteColor].CGColor;
 }
--(BOOL)useColorFilters{
-    return NO;
-}
+
 %end
 %end
 
@@ -44,6 +40,5 @@
     }
     if (shouldLoadWidgetHooks) {
         %init(Widget);
-        NSLog(@"widget_TWEAK | initWidget");
-    } else NSLog(@"widget_TWEAK | nope");
+    }
 }
